@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<link>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="keywords" content="碧霄云鹤,自然语言,人工智能,博客,个人网站" />
+<meta name="description" content="碧霄云鹤是致力于根据用户提出的问题,提供多方面解决建议的网站" />
+<link rel="shortcut icon" href="static/favicon.ico" />
+    <title>
+        {% block title %}AISIR{% endblock %}
+    </title>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="static/css/base.css" />
+
+</head>
+
+<body>
+
+<div class="header">
+    <div class="items">
+        <ul>
+            <li>
+                <a href="#">首页</a>
+            </li>
+            
+             <li>
+                <a href="#">关于</a>
+             </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="middle">
+        {% block content %}
+    {% endblock %}
+</div>
+
+<div class="footer" >
+        {% block footer %}
+    {# 任何每个页面都可能修改的文本区域的页脚 #}
+    {% endblock %}
+    <a> ©2015AiSir </a><a href='http://www.miibeian.gov.cn/'>京ICP备15047968号</a>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256359104'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256359104' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+</body>
+</html>

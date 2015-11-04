@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+{% block title %} bloglist {% endblock %}
+
+
+{% block content %}
+<h2>博客列表页</h2>
+<div class="list">
+   <ul>
+
+    {% for blog in blogs %}
+       <li >
+           <span class="title"><a href="{% url 'blogshow' blog.id %}">{{ blog.caption }}</a></span>
+
+           <span class="uptime">{{blog.update_time}}</span>
+       </li>
+    {% endfor %}     
+</ul>
+    </div>
+<div>{% if blogs.has_previous %}
+        <a class='paginator' title='上一页' href='?page={{ blogs.previous_page_number }}'><span>&lt;&lt;</span></a>
+ {% endif %}
+ {% for page in blogs.paginator.page_range %}
+     {% if page = blogs.number %}
+         <a class='paginator_current' title='当前页:{{ page }}'><span>{{ page }}</span></a>
+     {% else %}
+         <a class='paginator' href='?page={{ page }}' title='{{ page }}'><span>{{ page }}</span></a>
+     {% endif %}
+ {% endfor %}
+ {% if blogs.has_next %}
+     <a class='paginator' title='下一页' href='?page={{ blogs.next_page_number }}'><span>&gt;&gt;</span></a>
+ {% endif %}</div>
+{% endblock %}

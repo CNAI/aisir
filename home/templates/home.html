@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}碧霄云鹤{% endblock %}
+
+
+{% block content %}
+
+<div id="wrap" >
+
+	<div id="content">
+		<h2 style="margin-bottom:50px;">AISIR</h2>
+		<input type="text" style="width:300px;"  id="val" name="val"/>&nbsp;&nbsp;<input id="getit" type="button" value="发送"  style="width:100px;">
+	</div>
+	<br>
+	</div>
+
+		<div id="result" style="overflow:auto"></div>
+
+<script type="text/javascript" src="static/js/jquery.js"></script>
+	<script>
+		$('#getit').click(function(){
+			$.get("{% url 'robots' %}",{val:$('#val').val()},function(result){
+				$('#result').html(result);
+			});
+		});
+
+		   document.onkeydown=function(event){
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+             if(e && e.keyCode==13){ // enter 键
+                 $('#getit').click();
+            }
+        };
+	</script>
+{% endblock %}
